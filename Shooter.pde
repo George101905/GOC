@@ -1,13 +1,18 @@
 class Shooter extends Invader {
 
-    long mark, wait = 1500; // ms
+    long mark, wait = 500 ; // ms
 
     Shooter(float x, float y) {
         super(x, y);
-        mark = millis();
-        vel = new PVector(10 , 0);
+        mark = millis();     
+        vel = new PVector(5, 0);
     }
-
+    
+    @Override
+    void display() {
+        fill(255, 8, 0 );
+        ellipse(pos.x, pos.y, size.x, size.y);
+    }
     @Override
     void update() {
         super.update();

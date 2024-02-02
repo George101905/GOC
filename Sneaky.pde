@@ -1,10 +1,10 @@
-class Sneaky extends Invader {
+class Sneaky extends Sprite {
     int hp = 2;
-    long mark, wait = 500; // ms
+    long mark, wait = 800; // ms
 
     Sneaky(float x, float y) {
-        super(x, y);
-        vel = new PVector(9, 9);
+        super(x, y,30,30);
+        vel = new PVector(7, 7);
         mark = millis();
     }
     
@@ -31,6 +31,16 @@ class Sneaky extends Invader {
             mark = millis();
             _SM.spawn(new Bullet(pos, aim, team));
         }
+        
+        pos.add(vel);
+        
+        if (pos.x < 0 || pos.x > width) {
+            vel.x *= -1;
+        }
+        if (pos.y < 0 || pos.y > height) {
+            vel.y *= -1;
+        }
      }
+     
     
 }

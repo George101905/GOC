@@ -1,6 +1,6 @@
 class Player extends Sprite {
     boolean left, right, up, down;
-    int hp = 1;
+    int hp = 1; //
     Player(float x, float y) {
         // super refers to the parent
         // ... I use it here as a constructor

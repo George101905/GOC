@@ -1,7 +1,7 @@
 class Bullet extends Sprite {
     
     Bullet(float x, float y, PVector velocity, int team) {
-        super(x, y,20, 20); // invoke parent constructor
+        super(x, y, 17,17  ); // invoke parent constructor
         vel = velocity;
         this.team = team;
     }
@@ -11,12 +11,7 @@ class Bullet extends Sprite {
         this(pos.x, pos.y, vel, team); // invoke another own constructor
         // this refers to the above on line 3
     }
-    @Override
-     void display() {
-        fill(141, 141, 141) ;
-        ellipse(pos.x, pos.y, size.x, size.y);
-     }
-    @Override
+        //
     void update() {
         pos.add(vel);
     }
