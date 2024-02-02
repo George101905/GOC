@@ -13,7 +13,7 @@ class Sprite {
     }
     
     void display() {
-        fill(255);
+        fill(252, 252, 252);
         ellipse(pos.x, pos.y, size.x, size.y);
     }
     

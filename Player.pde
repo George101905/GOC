@@ -1,6 +1,6 @@
 class Player extends Sprite {
     boolean left, right, up, down;
-    
+    int hp = 1;
     Player(float x, float y) {
         // super refers to the parent
         // ... I use it here as a constructor
@@ -30,13 +30,19 @@ class Player extends Sprite {
 
     @Override
     void display() {
-        fill(200, 0, 200);
+        fill(171, 241, 248);
         ellipse(pos.x, pos.y, size.x, size.y);
     }
 
     @Override
     void handleCollision() {
-        // don't die.
+        hp -= 1;
+        if(hp <= 0){
+           _SM.destroy(this);
+           exit();
+        }
+       
+        
     }
 
     void keyUp() {
