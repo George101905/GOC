@@ -1,6 +1,6 @@
 class Shooter extends Invader {
 
-    long mark, wait = 500 ; // ms
+    long mark, wait = 750 ; // ms
 
     Shooter(float x, float y) {
         super(x, y);
