@@ -4,7 +4,7 @@ class Sneaky extends Sprite {
 
     Sneaky(float x, float y) {
         super(x, y,30,30);
-        vel = new PVector(7, 7);
+        vel = new PVector(8, 8);
         mark = millis();
     }
     
