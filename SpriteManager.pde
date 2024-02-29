@@ -3,6 +3,7 @@ class SpriteManager {
     
     ArrayList<Sprite> active = new ArrayList<Sprite>();
     ArrayList<Sprite> destroyed = new ArrayList<Sprite>();
+     ArrayList<Sprite> enemies = new ArrayList<Sprite>();
     
     SpriteManager() {
         player = new Player(width / 2, height - 100);
@@ -15,6 +16,7 @@ class SpriteManager {
     
     void spawn(Sprite obj) {
         active.add(obj);
+        enemies.add(obj);
     }
     
     void manage() {
@@ -57,9 +59,24 @@ class SpriteManager {
     }
     
     boolean collision(Sprite a, Sprite b) {
-        // assumes equal w and h
         float r1 = a.size.x / 2.0;
         float r2 = b.size.x / 2.0;
         return r1 + r2 > dist(a.pos.x, a.pos.y, b.pos.x, b.pos.y);
+    }
+
+    public String getTiers(){
+        int enemy = 0;
+        int miniBoss = 0;
+        int boss = 0;
+        for(int i = 0; i < enemies.size(); i++){
+            if(enemies.get(i).getHp() == 1){
+                enemy += 1;
+            } else if(enemies.get(i).getHp() == 2){
+                miniBoss += 1;
+            } else if(enemies.get(i).getHp() == 5){
+                boss += 1;
+            }
+        }
+        return "Enemies: " + enemy + " MiniBosses: " + miniBoss + " Bosses: " + boss;
     }
 }

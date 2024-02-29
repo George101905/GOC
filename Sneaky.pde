@@ -1,9 +1,9 @@
 class Sneaky extends Sprite {
-    int hp = 2;
-    long mark, wait = 800; // ms
+    
+    long mark, wait = 800; 
 
     Sneaky(float x, float y) {
-        super(x, y,30,30);
+        super(x, y,30,30,2);
         vel = new PVector(8, 8);
         mark = millis();
     }
@@ -14,18 +14,12 @@ class Sneaky extends Sprite {
       ellipse(pos.x, pos.y, size.x, size.y);
     }
     
-    @Override
-    void handleCollision() {
-        hp -= 1;
-        if(hp <= 0){
-           _SM.destroy(this);
-        }
-    } 
+    
     @Override
     void update(){
         super.update();
         PVector aim = new PVector(_SM.player.pos.x - this.pos.x, _SM.player.pos.y - this.pos.y);
-        aim = aim.normalize().mult(8); // turn this into a single unit vector, then increase its magnitude
+        aim = aim.normalize().mult(8); 
 
         if(millis() - mark > wait) {
             mark = millis();

@@ -1,12 +1,11 @@
 class Invader extends Sprite {
-    
-    // constructor
     Invader(float x, float y) {
-        super(x, y, 40,40);
-        vel = new PVector(20, 0); // moving right
+        super(x, y, 40,40, 1);
+        vel = new PVector(20, 0);
     }
     
-    @Override // change directions left and right
+
+    @Override
     void update() {
         pos.add(vel);
         
