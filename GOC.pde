@@ -17,7 +17,6 @@
         _SM.spawn(new BigGuy(200,50));
         _SM.spawn(new BigGuy(400,50));
         _SM.spawn(new BigGuy(600,50));
-        _SM.getTiers();
     }
    
 

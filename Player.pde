@@ -1,7 +1,7 @@
 class Player extends Sprite {
     boolean left, right, up, down;
     Player(float x, float y) {
-        super(x, y, 40, 40,1); 
+        super(x, y, 40, 40,3); 
         team = 1;
     }
 

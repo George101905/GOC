@@ -29,4 +29,8 @@ class Sprite {
            _SM.destroy(this);
         }
     }
+
+    int getTeam(){
+        return team;
+    }
 }

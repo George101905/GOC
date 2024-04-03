@@ -2,12 +2,15 @@ class SpriteManager {
     Player player;
     
     ArrayList<Sprite> active = new ArrayList<Sprite>();
+    ArrayList<Sprite> enemies = new ArrayList<Sprite>();
+    ArrayList<Sprite> goodGuys = new ArrayList<Sprite>();
     ArrayList<Sprite> destroyed = new ArrayList<Sprite>();
-     ArrayList<Sprite> enemies = new ArrayList<Sprite>();
     
     SpriteManager() {
         player = new Player(width / 2, height - 100);
         spawn(player);
+        getTiers(enemies);
+        getTiers(goodGuys);
     }
     
     void destroy(Sprite target) {
@@ -16,7 +19,11 @@ class SpriteManager {
     
     void spawn(Sprite obj) {
         active.add(obj);
-        enemies.add(obj);
+        if(obj.team == 1){
+            goodGuys.add(obj);
+        }else{
+            enemies.add(obj);
+        }    
     }
     
     void manage() {
@@ -64,17 +71,21 @@ class SpriteManager {
         return r1 + r2 > dist(a.pos.x, a.pos.y, b.pos.x, b.pos.y);
     }
 
-    public String getTiers(){
+    public String getTiers(ArrayList<Sprite> list){
         int enemy = 0;
         int miniBoss = 0;
         int boss = 0;
-        for(int i = 0; i < enemies.size(); i++){
-            if(enemies.get(i).getHp() == 1){
-                enemy += 1;
-            } else if(enemies.get(i).getHp() == 2){
-                miniBoss += 1;
-            } else if(enemies.get(i).getHp() == 5){
-                boss += 1;
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).getTeam() == 1){
+                return "Player: 1";
+            } else {
+                if(list.get(i).getHp() == 1){
+                    enemy += 1;
+                } else if(list.get(i).getHp() == 2){
+                    miniBoss += 1;
+                } else if(list.get(i).getHp() == 5){
+                    boss += 1;
+                }
             }
         }
         return "Enemies: " + enemy + " MiniBosses: " + miniBoss + " Bosses: " + boss;
