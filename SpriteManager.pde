@@ -9,8 +9,7 @@ class SpriteManager {
     SpriteManager() {
         player = new Player(width / 2, height - 100);
         spawn(player);
-        getTiers(enemies);
-        getTiers(goodGuys);
+       
     }
     
     void destroy(Sprite target) {
@@ -31,6 +30,8 @@ class SpriteManager {
         checkCollisions();    
         bringOutTheDead();
         drawEverything();
+        getTiers(enemies);
+        getTiers(goodGuys);
     }
     
     void moveEverything() {
@@ -71,13 +72,16 @@ class SpriteManager {
         return r1 + r2 > dist(a.pos.x, a.pos.y, b.pos.x, b.pos.y);
     }
 
-    public String getTiers(ArrayList<Sprite> list){
+    public void getTiers(ArrayList<Sprite> list){
+        textSize(25);
         int enemy = 0;
         int miniBoss = 0;
         int boss = 0;
         for(int i = 0; i < list.size(); i++){
             if(list.get(i).getTeam() == 1){
-                return "Player: 1";
+                //return "Player: 1";
+                text("Player: 1", 0, 50);
+                return;
             } else {
                 if(list.get(i).getHp() == 1){
                     enemy += 1;
@@ -88,6 +92,9 @@ class SpriteManager {
                 }
             }
         }
-        return "Enemies: " + enemy + " MiniBosses: " + miniBoss + " Bosses: " + boss;
+        //return "Enemies: " + enemy + " MiniBosses: " + miniBoss + " Bosses: " + boss;
+        text("Enemies/bullets: " + enemy, 0, 100);
+        text("MiniBosses: " + miniBoss, 0, 150);
+        text("Bosses: " + boss, 0, 200);
     }
 }
